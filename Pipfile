@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+morepath = "*"
+"more.transaction" = "*"
+"psycopg2" = "*"
+pyjade = "*"
+sqlalchemy = "*"
+"zope.sqlalchemy" = "*"
+requests-oauthlib = "*"
+"more.forwarded" = "*"
+deform = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
