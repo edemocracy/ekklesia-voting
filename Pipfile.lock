@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b2885b8709e8c10d5342daa2b09df24355294ab802e3e3e2a18a3daf2cc70cc0"
+            "sha256": "a9a69bf9b20b969aae31728a629cd2147f3cc4c0662e76aadfecf8ee814def6d"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.6"
+            "python_version": "3.7"
         },
         "sources": [
             {
@@ -58,6 +58,10 @@
             ],
             "index": "pypi",
             "version": "==2.0.6"
+        },
+        "e1839a8": {
+            "editable": true,
+            "path": "."
         },
         "idna": {
             "hashes": [
