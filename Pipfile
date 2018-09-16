@@ -16,6 +16,7 @@ deform = "*"
 
 [dev-packages]
 "e1839a8" = {editable = true, path = "."}
+werkzeug = "*"
 
 [requires]
 python_version = "3.7"
