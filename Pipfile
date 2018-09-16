@@ -16,7 +16,12 @@ deform = "*"
 
 [dev-packages]
 "e1839a8" = {editable = true, path = "."}
+"7547638" = {editable = true, path = "./../ekklesia-portal"}
+"3a80447" = {editable = true, path = "./../more.babel_i18n"}
+"38f2bc8" = {editable = true, path = "./../more.browser_session"}
 werkzeug = "*"
+markdown = "*"
+py-gfm = "*"
 
 [requires]
 python_version = "3.7"
