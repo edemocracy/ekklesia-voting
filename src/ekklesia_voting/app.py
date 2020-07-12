@@ -1,6 +1,6 @@
-from ekklesia_portal.helper.cell import JinjaCellEnvironment
-from ekklesia_portal.helper.concept import ConceptApp
-from ekklesia_portal.helper.templating import make_jinja_env, make_template_loader
+from ekklesia_common.cell import JinjaCellEnvironment
+from ekklesia_common.concept import ConceptApp
+from ekklesia_common.templating import make_jinja_env, make_template_loader
 from ekklesia_voting.request import EkklesiaVotingRequest
 import ekklesia_voting
 import morepath

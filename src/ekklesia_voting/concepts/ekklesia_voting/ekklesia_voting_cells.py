@@ -1,4 +1,4 @@
-from ekklesia_portal.helper.cell import Cell
+from ekklesia_common.cell import Cell
 
 
 class IndexCell(Cell):
