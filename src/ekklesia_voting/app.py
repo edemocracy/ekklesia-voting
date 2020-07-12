@@ -1,20 +1,14 @@
-from ekklesia_common.cell import JinjaCellEnvironment
-from ekklesia_common.concept import ConceptApp
-from ekklesia_common.templating import make_jinja_env, make_template_loader
-from ekklesia_voting.request import EkklesiaVotingRequest
-import ekklesia_voting
+from ekklesia_common.app import EkklesiaBrowserApp
 import morepath
+import ekklesia_voting
 
 
-class App(ConceptApp):
+class BaseApp(EkklesiaBrowserApp):
+    package_name = 'ekklesia_voting'
 
-    request_class = EkklesiaVotingRequest
 
-    def __init__(self):
-        super().__init__()
-        self.jinja_env = make_jinja_env(jinja_environment_class=JinjaCellEnvironment,
-                                        jinja_options=dict(loader=make_template_loader(App.config, 'ekklesia_voting')),
-                                        app=self)
+class App(BaseApp):
+    pass
 
 
 def make_wsgi_app():
