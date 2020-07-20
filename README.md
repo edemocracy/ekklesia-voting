@@ -2,6 +2,11 @@
 
 Pseudonymous voting component of the Ekklesia e-democracy platform.
 
+## Development
+
+See [Documentation for the Ekklesia project](https://docs.ekklesiademocracy.org/en/latest/development/index.html).
+
+
 ## Tech Stack
 
 * Backend: [Python 3.8](https://www.python.org)
