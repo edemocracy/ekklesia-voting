@@ -1,0 +1,97 @@
+# German translations for PROJECT.
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-06-18 21:55+0200\n"
+"PO-Revision-Date: 2015-09-06 22:42+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
+
+#: src/ekklesia_voting/concepts/ballot_voting/ballot_voting_contracts.py:11
+#: src/ekklesia_voting/helper/missing_translations.py:5
+msgid "Yes"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ballot_voting/ballot_voting_contracts.py:11
+#: src/ekklesia_voting/helper/missing_translations.py:6
+msgid "No"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ballot_voting/ballot_voting_contracts.py:11
+msgid "Abstention"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ballot_voting/ballot_voting_contracts.py:70
+msgid "button_check_vote"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_voting.j2.jade:3
+#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_voting.j2.jade:5
+#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_voting_vote.j2.jade:3
+#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_voting_vote.j2.jade:5
+msgid "ballot_voting"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_voting_confirm.j2.jade:85
+msgid "button_confirm_vote"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_votings.j2.jade:3
+msgid "overview"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_votings.j2.jade:5
+msgid "ballot_votings"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ekklesia_voting/templates/layout.j2.jade:34
+msgid "button_logout"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ekklesia_voting/templates/layout.j2.jade:36
+msgid "button_login"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ekklesia_voting/templates/layout.j2.jade:44
+msgid "link_other"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ekklesia_voting/templates/layout.j2.jade:46
+msgid "faq"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ekklesia_voting/templates/layout.j2.jade:48
+msgid "terms_of_use"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ekklesia_voting/templates/layout.j2.jade:50
+msgid "data_protection"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ekklesia_voting/templates/layout.j2.jade:52
+msgid "imprint"
+msgstr ""
+
+#: src/ekklesia_voting/concepts/ekklesia_voting/templates/layout.j2.jade:54
+msgid "source code"
+msgstr ""
+
+#: src/ekklesia_voting/helper/missing_translations.py:3
+msgid "alert_ekklesia_login_not_allowed"
+msgstr ""
+
+#: src/ekklesia_voting/helper/missing_translations.py:4
+msgid "alert_logged_in_to"
+msgstr ""
+
