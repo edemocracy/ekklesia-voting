@@ -1,0 +1,29 @@
+- if layout
+  - extends "ekklesia_voting/layout.j2.jade"
+
+- block title
+  title
+    = brand_title
+    |&nbsp;-&nbsp;
+    = _('ballot_voting')
+
+
+- block content
+
+  if layout
+    h2= _('ballot_voting')
+
+  .ballot_voting.container
+    h3
+      = title
+
+    = description|markdown
+
+    = form_html
+
+    :markdown
+
+      **Important Note**
+
+      To cast your vote, you have to check your submitted vote and confirm after
+      clicking "Submit & Check Vote...".

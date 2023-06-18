@@ -1,0 +1,23 @@
+- if layout
+  - extends "ekklesia_voting/layout.j2.jade"
+
+
+- block content
+
+  if back_url and from_redirect
+    .alert.alert-primary
+      = _("alert_login_first", url=back_url)
+
+
+  if show_ekklesia_login
+
+    h2= _("title_ekklesia_login", name=ekklesia_login_name)
+
+    a.btn.btn-primary(href=ekklesia_login_url)
+      i.fas.fa-sign-in-alt
+      |&nbsp;
+      = _("button_ekklesia_login", name=ekklesia_login_name)
+
+
+// generated from jade
+//- vim: set filetype=jade sw=2 ts=2 sts=2 expandtab:

@@ -1,0 +1,232 @@
+@import custom
+@import bootstrap/bootstrap
+@import font-awesome/fontawesome
+@import font-awesome/regular
+@import font-awesome/solid
+@import font-awesome/brands
+@import custom
+
+html
+  height: 100%
+
+body
+  min-height: 100%
+  position: relative
+
+$light-orange: lighten($orange, 15%)
+$light-blue: lighten($blue, 15%)
+$light-violet: lighten($violet, 50%)
+
+.alert_message
+  @extend .alert
+  @extend .alert-info
+
+.alert_error,.alert_danger
+  @extend .alert
+  @extend .alert-danger
+
+.alert_warning
+  @extend .alert
+  @extend .alert-warning
+
+.content_area
+  @extend .container
+  @extend .my-2
+  padding-bottom: 3rem
+  margin-bottom: 0 !important
+
+footer.footer
+  @extend .bg-primary
+  @extend .p-2
+
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  height: 3em
+
+  .list-inline
+    @extend .my-1
+
+.large_number
+  font-size: 1.2rem
+
+.nav-pills
+  .nav-link.active
+    color: $link_color
+
+.notice
+  @extend .card
+  margin-bottom: 1rem
+  border:
+
+  .notice-header
+    @extend .card-header
+
+  .notice-body
+    padding: 1rem
+    @extend .card-body
+
+    .notice-title
+      @extend .card-title
+
+    p:last-child
+      margin-bottom: 0
+
+.sort-nav
+  padding-left: 0.5rem
+
+.sort-nav, .filter-nav
+  @extend .nav
+  @extend .nav-pills
+  margin-bottom: 0.5rem
+
+.filter-nav
+  .filter
+    @extend .nav-link
+
+.page-selector
+  margin-bottom: 1rem
+  text-align: center
+
+  .prop-count
+    margin-bottom: 0.5rem
+
+  ul
+    padding: 0
+    margin: 0 0 0.5rem
+
+    li
+      display: inline-block
+
+  .page_btn
+    @extend .btn
+    @extend .btn-secondary
+
+.page-selector-bottom
+  @extend .page-selector
+  margin-top: 2rem
+  margin-bottom: 2rem
+
+  form
+    font-size: 0.9rem
+
+    select
+      -moz-appearance: none /* Firefox */
+      -webkit-appearance: none /* Safari and Chrome */
+      appearance: none
+      border: 1px solid #ced4da
+      border-radius: 0.25rem
+      padding: 0.1rem 0.3rem
+      width: 3.5rem
+      height: 1.8rem
+      vertical-align: middle
+      background-color: #F8F8F8
+
+    select:hover
+      box-shadow: inset 0 0 10px -4px gray
+
+    .select-dropdown-icon
+      height: 1.8rem
+      vertical-align: bottom
+      padding-top: 0.5rem
+      margin-left: -1.1rem
+      pointer-events: none
+      padding-right: 0.3rem
+
+    input
+      @extend .btn
+      @extend .btn-secondary
+      @extend .btn-sm
+
+.login_logout_button
+  @extend .btn
+  @extend .btn-outline-dark
+  @extend .mx-2
+
+.lang_select_button
+  @extend .btn
+  @extend .btn-secondary
+  @extend .btn-sm
+
+.login_button
+  @extend .login_logout_button
+
+.logout_button
+  @extend .login_logout_button
+
+.progress_row
+  @extend .row
+  display: flex
+  align-items: center
+
+  .progress
+    height: 1.5rem
+
+  .progress-bar
+    color: black
+
+.top_navbar
+  @extend .navbar
+  @extend .navbar-light
+  @extend .navbar-expand-lg
+  @extend .bg-primary
+
+.top_lang_controls
+  @extend .form-inline
+  margin-bottom: 0
+
+.top_logout
+  @extend .form-inline
+  margin-bottom: 0
+
+h1>a,h2>a,h3>a,h4>a,h5>a
+  color: darkblue
+
+
+// map deform classes which uses bootstrap 3
+
+
+.control-label
+  font-size: 1.1rem
+
+.help-block
+  @extend .form-text
+  font-size: 0.9rem
+
+.form-group.has-error
+  @extend .mark
+
+.has-error .form-control
+  @extend .is-invalid
+
+.panel
+  @extend .card
+
+.panel-body
+  @extend .card-body
+
+.panel-heading
+  @extend .card-header
+
+.radio-inline
+  @extend .form-check-inline
+  margin-right: 0.9rem
+
+  input
+    margin-right: 0.2rem
+
+.control-label
+  @extend .col-form-label
+
+
+.ballot_voting
+  .form-group
+    margin-bottom: 0
+
+  .panel
+    margin-bottom: 0.5rem
+
+  .panel-body
+    padding-top: 0.5rem
+    padding-bottom: 0.5rem

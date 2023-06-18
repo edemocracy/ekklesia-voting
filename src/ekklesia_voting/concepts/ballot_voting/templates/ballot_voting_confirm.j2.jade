@@ -1,0 +1,110 @@
+- if layout
+  - extends "ekklesia_voting/layout.j2.jade"
+
+- block title
+  title
+    = brand_title
+    |&nbsp;-&nbsp;
+    | Check and confirm your vote
+
+
+- block content
+
+  if layout
+    h2 Check and confirm your vote
+
+  .ballot_voting.container
+    h3
+      | Ballot:
+      = title
+
+    :markdown
+
+      **Please check the submitted data!**
+
+    table.table
+
+      if voting_type == "yes_no"
+        thead
+          tr
+            th(scope='col') Approval
+            th(scope='col') Proposition
+        tbody
+          for vote in votes_to_confirm
+            tr
+              td
+              td= vote.yes_no|yesno
+              td= vote.title
+              td= vote.token
+
+      if voting_type == "scored"
+        thead
+          tr
+            th(scope='col') Place
+            th(scope='col') Approval
+            th(scope='col') Points
+            th(scope='col') Proposition
+            th(scope='col') Voting token
+        tbody
+          for vote in votes_to_confirm
+            tr
+              td
+                = loop.index
+                |.
+              td= vote.yes_no|yesno
+              td= vote.points
+              td= vote.title
+              td= vote.token
+
+      if voting_type == "candidate_list"
+        thead
+          tr
+            th(scope='col') Place
+            th(scope='col') Points
+            th(scope='col') Candidate
+            th(scope='col') Voting token
+        tbody
+          for vote in votes_to_confirm
+            tr
+              td
+                = loop.index
+                |.
+              td= vote.points
+              td= vote.title
+              td= vote.token
+
+
+      if voting_type == "stv"
+        thead
+          tr
+            th(scope='col') Place
+            th(scope='col') Candidate
+            th(scope='col') Voting token
+        tbody
+          for vote in votes_to_confirm
+            tr
+              td
+                = loop.index
+                |.
+              td= vote.title
+              td= vote.token
+
+    hr
+
+    :markdown
+
+      The result will be published together with a list of all votes and their the
+      associated voting tokens. You will then be able to verify that your vote has been
+      counted correctly in the end result.
+
+      **To cast your final vote, click "Confirm Vote"**
+
+      We will send you a notification via Matrix or Mail after your have cast your vote.
+
+
+    form(action=confirm_action, method='POST')
+      for vote in votes_to_confirm
+        input(type='hidden', name='token', value=vote.token)
+
+      button.btn.btn-primary(type='submit')
+        = _('button_confirm_vote')
