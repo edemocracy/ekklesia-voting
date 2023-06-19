@@ -18,41 +18,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
 
-#: src/ekklesia_voting/concepts/ballot_voting/ballot_voting_contracts.py:11
+#: src/ekklesia_voting/concepts/ballot/ballot_contracts.py:11
 #: src/ekklesia_voting/helper/missing_translations.py:5
 msgid "Yes"
 msgstr ""
 
-#: src/ekklesia_voting/concepts/ballot_voting/ballot_voting_contracts.py:11
+#: src/ekklesia_voting/concepts/ballot/ballot_contracts.py:11
 #: src/ekklesia_voting/helper/missing_translations.py:6
 msgid "No"
 msgstr ""
 
-#: src/ekklesia_voting/concepts/ballot_voting/ballot_voting_contracts.py:11
+#: src/ekklesia_voting/concepts/ballot/ballot_contracts.py:11
 msgid "Abstention"
 msgstr ""
 
-#: src/ekklesia_voting/concepts/ballot_voting/ballot_voting_contracts.py:70
+#: src/ekklesia_voting/concepts/ballot/ballot_contracts.py:70
 msgid "button_check_vote"
 msgstr ""
 
-#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_voting.j2.jade:3
-#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_voting.j2.jade:5
-#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_voting_vote.j2.jade:3
-#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_voting_vote.j2.jade:5
-msgid "ballot_voting"
+#: src/ekklesia_voting/concepts/ballot/templates/ballot.j2.jade:3
+#: src/ekklesia_voting/concepts/ballot/templates/ballot.j2.jade:5
+#: src/ekklesia_voting/concepts/ballot/templates/ballot_vote.j2.jade:3
+#: src/ekklesia_voting/concepts/ballot/templates/ballot_vote.j2.jade:5
+msgid "ballot"
 msgstr ""
 
-#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_voting_confirm.j2.jade:85
+#: src/ekklesia_voting/concepts/ballot/templates/ballot_confirm.j2.jade:85
 msgid "button_confirm_vote"
 msgstr ""
 
-#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_votings.j2.jade:3
+#: src/ekklesia_voting/concepts/ballot/templates/ballots.j2.jade:3
 msgid "overview"
 msgstr ""
 
-#: src/ekklesia_voting/concepts/ballot_voting/templates/ballot_votings.j2.jade:5
-msgid "ballot_votings"
+#: src/ekklesia_voting/concepts/ballot/templates/ballots.j2.jade:5
+msgid "ballots"
 msgstr ""
 
 #: src/ekklesia_voting/concepts/ekklesia_voting/templates/layout.j2.jade:34
@@ -94,4 +94,3 @@ msgstr ""
 #: src/ekklesia_voting/helper/missing_translations.py:4
 msgid "alert_logged_in_to"
 msgstr ""
-

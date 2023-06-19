@@ -4,8 +4,7 @@ import morepath
 from ekklesia_common.identity_policy import NoIdentity
 from ekklesia_common.utils import cached_property
 
-# TODO: Implement user model
-# from ekklesia_common.datamodel import User
+from ekklesia_voting.datamodel import Voter
 
 
 logg = logging.getLogger(__name__)
@@ -34,7 +33,7 @@ class EkklesiaVotingIdentityPolicy(morepath.IdentityPolicy):
         if user_id is None:
             return NoIdentity()
 
-        user = request.db_session.query(User).get(user_id)
+        user = request.db_session.query(Voter).get(user_id)
 
         if user is None:
             logg.info("user_id %s in session, but not found in the database!", user_id)

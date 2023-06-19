@@ -4,29 +4,28 @@ from deform.widget import RadioChoiceWidget
 from ekklesia_common.contract import Schema, Form
 from ekklesia_common.translation import _
 
-from ekklesia_voting.datamodel import BallotVoting
+from ekklesia_voting.datamodel import Ballot
 
 
-def ballot_voting_form(ballot_voting: BallotVoting, request):
+def ballot_form(ballot: Ballot, request):
     yes_no_choices = [(True, _("Yes")), (False, _("No")), (None, _("Abstention"))]
 
-    if ballot_voting.max_points:
+    if ballot.max_points:
         point_choices = [
-            (i, str(i))
-            for i in range(ballot_voting.min_points, ballot_voting.max_points + 1)
+            (i, str(i)) for i in range(ballot.min_points, ballot.max_points + 1)
         ]
     else:
         point_choices = None
 
     schema = Schema()
 
-    rank_choices = [(i, str(i)) for i in range(1, len(ballot_voting.options) + 1)]
+    rank_choices = [(i, str(i)) for i in range(1, len(ballot.options) + 1)]
 
-    for option in ballot_voting.options:
+    for option in ballot.options:
 
         option_schema = SchemaNode(Mapping(), name=str(option.uuid), title=option.title)
 
-        if ballot_voting.use_yes_no:
+        if ballot.use_yes_no:
             option_schema.add(
                 SchemaNode(
                     Boolean(),
@@ -51,7 +50,7 @@ def ballot_voting_form(ballot_voting: BallotVoting, request):
                 )
             )
 
-        if ballot_voting.use_rank:
+        if ballot.use_rank:
             option_schema.add(
                 SchemaNode(
                     Int(),

@@ -2,13 +2,12 @@ import argparse
 import logging
 import textwrap
 from datetime import datetime
-from typing import NamedTuple, Optional
+from typing import NamedTuple
 
 import sqlalchemy.orm
 import transaction
 from alembic import command
 from alembic.config import Config
-from ekklesia_common.ekklesia_auth import OAuthToken
 from sqlalchemy import pool
 
 from ekklesia_voting.app import make_wsgi_app
@@ -39,9 +38,10 @@ if __name__ == "__main__":
 
     # local import because we have to set up the database stuff before that
     from ekklesia_voting.datamodel import (
-        User,
+        Voter,
         BallotOption,
-        BallotVoting,
+        Ballot,
+        OAuthToken,
     )
 
     print(f"using config file {args.config_file}")
@@ -65,13 +65,16 @@ if __name__ == "__main__":
 
     s = Session()
 
-    nl_user = User(
-        oauth_token=OAuthToken(provider="ekklesia", token={}),
+    nl_voter = Voter(
+        oauth_token=OAuthToken(provider="ekklesia", token={}), auid="nl_voter"
     )
 
-    de_user = User(
-        oauth_token=OAuthToken(provider="ekklesia", token={}),
+    de_voter = Voter(
+        oauth_token=OAuthToken(provider="ekklesia", token={}), auid="de_voter"
     )
+
+    s.add(nl_voter)
+    s.add(de_voter)
 
     class Proposition(NamedTuple):
         title: str
@@ -166,7 +169,7 @@ if __name__ == "__main__":
     vote_starts_at = datetime.fromisoformat("2023-05-24")
     vote_ends_at = datetime.fromisoformat("2023-07-29")
 
-    ballot_voting = BallotVoting(
+    ballot = Ballot(
         title="Changes to the Smart state vision",
         starts_at=vote_starts_at,
         ends_at=vote_ends_at,
@@ -196,18 +199,18 @@ if __name__ == "__main__":
         )
         return BallotOption(title=title, text=text)
 
-    ballot_voting.options = [
+    ballot.options = [
         option_from_proposition(p) for p in [q1, q1_counter, q1_counter_2]
     ]
 
-    s.add(ballot_voting)
+    s.add(ballot)
 
     def option_from_candidate_name(name):
         return BallotOption(title=name, text="More info about the candidate")
 
     candidates = ["X candidate", "C candidate", "Z Candidate"]
 
-    election_stv = BallotVoting(
+    election_stv = Ballot(
         title="Election (STV)",
         starts_at=vote_starts_at,
         ends_at=vote_ends_at,
@@ -230,7 +233,7 @@ if __name__ == "__main__":
 
     election_stv.options = [option_from_candidate_name(name) for name in candidates]
 
-    election_rank = BallotVoting(
+    election_rank = Ballot(
         title="Election (candidate list)",
         starts_at=vote_starts_at,
         ends_at=vote_ends_at,

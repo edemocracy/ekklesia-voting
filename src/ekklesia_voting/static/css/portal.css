@@ -12656,12 +12656,12 @@ h1 > a, h2 > a, h3 > a, h4 > a, h5 > a {
   .radio-inline input {
     margin-right: 0.2rem; }
 
-.ballot_voting .form-group {
+.ballot .form-group {
   margin-bottom: 0; }
 
-.ballot_voting .panel {
+.ballot .panel {
   margin-bottom: 0.5rem; }
 
-.ballot_voting .panel-body {
+.ballot .panel-body {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem; }

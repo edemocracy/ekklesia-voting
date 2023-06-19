@@ -19,5 +19,20 @@
       = _("button_ekklesia_login", name=ekklesia_login_name)
 
 
+  if show_internal_login
+    hr
+    h2 Internal DEV Login
+
+    .alert.alert-danger
+      strong= _('warning_development_mode')
+
+
+    form(action="/login", method="POST")
+      p
+        label(for="auid") AUID
+        input(name="auid", value="nl_voter")
+
+      input(type="submit")
+
 // generated from jade
 //- vim: set filetype=jade sw=2 ts=2 sts=2 expandtab:

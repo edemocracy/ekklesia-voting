@@ -9,7 +9,7 @@ from ekklesia_voting.app import App
 from markupsafe import Markup
 from ekklesia_common.debug.tbtools import Traceback
 
-from ..ballot_voting.ballot_votings import BallotVotings
+from ..ballot.ballots import Ballots
 
 
 class LayoutCell(Cell):
@@ -48,8 +48,8 @@ class LayoutCell(Cell):
 
         return self.link(Login(back_url=back_url))
 
-    def ballot_votings_url(self):
-        return self.link(BallotVotings())
+    def ballots_url(self):
+        return self.link(Ballots())
 
     def logout_action(self):
         return self.link(Logout())
