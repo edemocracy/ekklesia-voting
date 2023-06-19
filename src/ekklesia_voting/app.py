@@ -9,12 +9,12 @@ import morepath
 import yaml
 from ekklesia_common import database
 from ekklesia_common.app import EkklesiaBrowserApp
-from ekklesia_common.ekklesia_auth import EkklesiaAuth, EkklesiaAuthPathApp, OAuthToken
+from ekklesia_common.ekklesia_auth import EkklesiaAuth, EkklesiaAuthPathApp
 from ekklesia_common.lid import LID
 from eliot import log_call, start_action, log_message
 
 import ekklesia_voting
-from ekklesia_voting.datamodel import User
+from ekklesia_voting.datamodel import Voter, OAuthToken
 from ekklesia_voting.identity_policy import EkklesiaVotingIdentityPolicy
 
 logg = logging.getLogger(__name__)
@@ -119,7 +119,7 @@ def create_or_update_user(request, ekklesia_auth: EkklesiaAuth) -> None:
     if user_profile is None:
         user_profile = UserProfile(sub=sub)
         oauth_token = OAuthToken(provider="ekklesia", token=token)
-        user = User(
+        user = Voter(
             name=name, auth_type="oauth", profile=user_profile, oauth_token=oauth_token
         )
         logg.debug("created new ekklesia user with sub %s, name %s", sub, name)
@@ -153,7 +153,7 @@ def create_or_update_user(request, ekklesia_auth: EkklesiaAuth) -> None:
 def get_oauth_token_from_user(app, request):
     logg.debug("get_oauth_token_from_user")
     user = request.current_user
-    if user is None or user.auth_type != "oauth":
+    if user is None:
         return None
     return user.oauth_token.token
 

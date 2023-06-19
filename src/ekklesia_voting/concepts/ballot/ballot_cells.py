@@ -1,38 +1,38 @@
 from ekklesia_voting.app import App
-from ekklesia_voting.datamodel import BallotVoting
-from .ballot_voting_contracts import ballot_voting_form
-from .ballot_votings import BallotVotings
+from ekklesia_voting.datamodel import Ballot
+from .ballot_contracts import ballot_form
+from .ballots import Ballots
 from ..ekklesia_voting.ekklesia_voting_cells import LayoutCell
 
 
-@App.cell(BallotVotings)
-class BallotVotingsCell(LayoutCell):
-    def ballot_votings(self):
-        return list(self._model.ballot_votings(self._request.q))
+@App.cell(Ballots)
+class BallotsCell(LayoutCell):
+    def ballots(self):
+        return list(self._model.ballots(self._request.q))
 
 
-@App.cell(BallotVoting)
-class BallotVotingCell(LayoutCell):
+@App.cell(Ballot)
+class BallotCell(LayoutCell):
     model_properties = ["ends_at", "starts_at", "title"]
 
     def vote_url(self):
         return self.link(self._model, "vote")
 
 
-@App.cell(BallotVoting, "vote")
-class BallotVotingVoteCell(LayoutCell):
+@App.cell(Ballot, "vote")
+class BallotVoteCell(LayoutCell):
     model_properties = ["ends_at", "starts_at", "title", "description"]
 
     def form_html(self):
-        form = ballot_voting_form(self._model, self._request)
+        form = ballot_form(self._model, self._request)
         form_html = form.render()
         return self.markup_class(form_html)
 
 
-@App.cell(BallotVoting, "confirm")
-class BallotVotingConfirmCell(LayoutCell):
+@App.cell(Ballot, "confirm")
+class BallotConfirmCell(LayoutCell):
     model_properties = ["title"]
-    _model: BallotVoting
+    _model: Ballot
 
     def confirm_action(self):
         return self.link(self._model, "confirm")
@@ -65,8 +65,7 @@ class BallotVotingConfirmCell(LayoutCell):
 
             return vote
 
-        auid = self._request.browser_session["auid"]
-        votes = [ee(*t) for t in self._model.votes_to_confirm(auid)]
+        votes = [ee(*t) for t in self._model.votes_to_confirm(self.current_user)]
 
         voting = self._model
 
