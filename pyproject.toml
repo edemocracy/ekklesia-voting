@@ -97,7 +97,6 @@ addopts = """\
 filterwarnings = [
     "ignore::DeprecationWarning"
 ]
-norecursedirs = "tests/helpers"
 testpaths = "tests"
 markers = [
     "integration: An Integration test which is allowed to modify the test database."
