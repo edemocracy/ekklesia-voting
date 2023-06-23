@@ -1,0 +1,20 @@
+---
+name: "Run Tests"
+on:
+  pull_request:
+  push:
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v20
+    - uses: cachix/cachix-action@v12
+      with:
+        name: edemocracy
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - run: nix develop --impure -c ./scripts/test-setup.sh /tmp
+    - run: nix develop --impure -c pytest
+
+
+# vim: set filetype=yaml sw=2 ts=2 sts=2 expandtab:
