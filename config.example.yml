@@ -1,0 +1,35 @@
+# Settings from ekklesia_voting/app.py
+database:
+    # This uses TCP to connect to the database
+    uri: "postgresql+psycopg2://ekklesia_voting_db_user:ekklesia_voting_db_password@127.0.0.1/ekklesia_voting_db_name"
+    # This uses the PostgreSQL socket in /run/postgresql to connect to the database
+    #uri: "postgresql+psycopg2:///ekklesia_voting?host=/run/postgresql"
+app:
+    instance_name: my_ekklesia_voting
+    # Set this to true for local development, always false in production as it allows unrestricted access for everybody!.
+    insecure_development_mode: false
+    # Can be useful for debugging validation errors, don't use it in production.
+    fail_on_form_validation_error: false
+    # Set this to false for local development, always to true in production!
+    force_ssl: true
+    tos_url: https://portal.example.invalid/pages/tos
+    imprint_url: https://portal.example.invalid/pages/imprint
+    data_protection_url: https://portal.example.invalid/pages/data_protection
+    faq_url: https://portal.example.invalid/pages/faq
+    languages:
+        - de
+        - en
+        - nl
+# Settings from ekklesia_common/app.py
+browser_session:
+    secret_key: devkey
+    # Set this to false for local development, always to true in production!
+    cookie_secure: true
+    permanent_lifetime: 900
+# Settings from ekklesia_common/ekklesia_auth.py
+ekklesia_auth:
+    client_id: client_id_from_keycloak
+    client_secret: secret_from_keycloak
+    authorization_url: https://keycloak.example.invalid/auth/realms/test/protocol/openid-connect/auth
+    token_url: https://keycloak.example.invalid/auth/realms/test/protocol/openid-connect/token
+    userinfo_url: https://keycloak.example.invalid/auth/realms/test/protocol/openid-connect/userinfo

@@ -91,7 +91,7 @@
 
               packages = deps.shellInputs;
 
-              scripts = {
+              scripts = rec {
                 build_python_venv.exec = ''
                   nix build .#venv -o venv
                   echo "Created directory 'venv' which is similar to a Python virtualenv."
@@ -115,7 +115,7 @@
                   echo "Recompiling CSS and translation files if source files change..."
                   ls src/ekklesia_voting/translations/*/*/*.po src/ekklesia_voting/sass/*.sass | entr doit
                 '';
-                help.exec = ''
+                dev_help.exec = ''
                   cat << END
                   # Development Shell Commands
                   (standard tools + commands defined in flake.nix)
@@ -134,6 +134,7 @@
                   console                  Run IPython REPL for interaction with application objects.
                   END
                 '';
+                help.exec = dev_help.exec;
               };
             };
 

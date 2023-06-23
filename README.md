@@ -46,7 +46,7 @@ PostgreSQL server, have a look at the [Development Environment](https://docs.ekk
 section in the Ekklesia documentation.
 
 It's strongly recommended to also follow the instructions at
-`Setting up the Cachix Binary Cache <https://docs.ekklesiademocracy.org/en/latest/development/dev_env.html#setting-up-the-cachix-binary-cache>`
+[Setting up the Cachix Binary Cache](https://docs.ekklesiademocracy.org/en/latest/development/dev_env.html#setting-up-the-cachix-binary-cache)
 or the first step will take a long time to complete.
 
 1. Clone the repository and enter nix shell in the project root folder to open a shell which is
@@ -55,7 +55,7 @@ or the first step will take a long time to complete.
    ```
    git clone https://github.com/edemocracy/ekklesia-voting
    cd ekklesia-voting
-   nix develop
+   nix develop --impure
    ```
 
 2. Compile translations and CSS (look at `dodo.py` to see what this does):
@@ -66,7 +66,8 @@ or the first step will take a long time to complete.
 
 3. Create a config file named `config.yml` using the config template
    from `src/ekklesia_voting/config.example.yml` or skip this to use
-   the default settings from `src/ekklesia_voting/default_settings.py`.
+   the default settings from `ekklesia_voting/app.py`, `ekklesia_common/app.py`
+   and `ekklesia_common/ekklesia_auth.py`.
    Make sure that the database connection string points to an
    empty + writable database.
 
@@ -81,7 +82,7 @@ or the first step will take a long time to complete.
    run_dev
    ```
 
-Run `help` to see all commonly used dev shell commands
+Run `dev_help` to see all commonly used dev shell commands
 
 ## License
 
