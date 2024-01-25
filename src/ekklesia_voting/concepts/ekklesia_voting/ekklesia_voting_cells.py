@@ -91,14 +91,18 @@ class ExceptionCell(LayoutCell):
             return Markup(werkzeug_traceback.render_full())
 
 
-@App.cell(Index)
+@App.cell()
 class IndexCell(LayoutCell):
+
+    _model: Index
     def insecure_development_mode_enabled(self):
         return self._app.settings.app.insecure_development_mode
 
 
-@App.cell(Login)
+@App.cell()
 class LoginCell(LayoutCell):
+
+    _model: Login
     model_properties = ["username", "back_url", "from_redirect"]
 
     def ekklesia_login_url(self):

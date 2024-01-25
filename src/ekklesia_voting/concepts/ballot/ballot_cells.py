@@ -5,22 +5,28 @@ from .ballots import Ballots
 from ..ekklesia_voting.ekklesia_voting_cells import LayoutCell
 
 
-@App.cell(Ballots)
+@App.cell()
 class BallotsCell(LayoutCell):
+    _model: Ballots
+
     def ballots(self):
         return list(self._model.ballots(self._request.q))
 
 
-@App.cell(Ballot)
+@App.cell()
 class BallotCell(LayoutCell):
+
+    _model: Ballot
     model_properties = ["ends_at", "starts_at", "title"]
 
     def vote_url(self):
         return self.link(self._model, "vote")
 
 
-@App.cell(Ballot, "vote")
+@App.cell("vote")
 class BallotVoteCell(LayoutCell):
+
+    _model: Ballot
     model_properties = ["ends_at", "starts_at", "title", "description"]
 
     def form_html(self):
@@ -29,10 +35,11 @@ class BallotVoteCell(LayoutCell):
         return self.markup_class(form_html)
 
 
-@App.cell(Ballot, "confirm")
+@App.cell("confirm")
 class BallotConfirmCell(LayoutCell):
-    model_properties = ["title"]
+
     _model: Ballot
+    model_properties = ["title"]
 
     def confirm_action(self):
         return self.link(self._model, "confirm")
