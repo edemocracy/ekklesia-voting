@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ekklesia-voting"
-version = "23.06.0"
+version = "24.1.0"
 description = "Pseudonymous voting for the Ekklesia e-democracy platform"
 keywords = ["ekklesia", "edemocracy", "evoting", "voting", "participation"]
 readme = "README.md"
