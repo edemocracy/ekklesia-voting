@@ -1,4 +1,4 @@
-{ pkgs, poetry2nix, poetry }:
+{ pkgs, poetry2nix }:
 
 with builtins;
 
@@ -9,6 +9,7 @@ let
   javascriptDeps = pkgs.callPackage ./javascript_deps.nix { };
   font-awesome = pkgs.callPackage ./font-awesome.nix { };
   python = pkgs.python311;
+  poetry = (pkgs.poetry.override { python3 = python; });
 
   overrides = poetry2nix.overrides.withDefaults (
     self: super:
@@ -27,14 +28,16 @@ let
               pnames);
       in
       {
-        # XXX: Weird issue: rich fails because commonmark is missing
-        # in overrides/default.nix from poetry2nix.
-        commonmark = self.CommonMark;
-
+        mimesis-factory = super.mimesis-factory.overridePythonAttrs (old: {
+          buildInputs = old.buildInputs ++ [ self.poetry-core ];
+          patchPhase = ''
+            substituteInPlace pyproject.toml --replace poetry.masonry poetry.core.masonry
+          '';
+        });
         pypugjs = super.pypugjs.overridePythonAttrs (
           old: {
             format = "setuptools";
-            buildInputs = old.buildInputs ++ [ poetry ];
+            buildInputs = old.buildInputs ++ [ self.poetry-core ];
           }
         );
       } //
@@ -48,37 +51,42 @@ let
         "pytest-pspec"
       ]) //
       (addPythonBuildDeps
-        [ self.setuptools ] [
-       "base32-crockford"
-       "markuppy"
-      ]) //
-      (addPythonBuildDeps [ self.flit-core ] [
-        "colored"
-      ]) //
-        (addPythonBuildDeps
-        [ self.poetry self.greenlet ] [
+        [ self.setuptools ]
+        [ "base32-crockford" ]
+      ) //
+      (addPythonBuildDeps
+        [ self.flit-core ] [
+          "cloudpickle"
+          "colored"
+        ]
+      ) //
+      (addPythonBuildDeps
+        [ self.poetry-core ] [
         "ekklesia-common"
         "iso8601"
-        "mimesis-factory"
         "more-browser-session"
         "more-babel-i18n"
+      ]) //
+      (addPythonBuildDeps
+        [ self.poetry-core self.greenlet ] [
+        "alembic"
+        "eliot-tree"
         "pytest-factoryboy"
         "sqlalchemy"
-        "zope-sqlalchemy"
-        "alembic"
         "sqlalchemy-utils"
+        "zope-sqlalchemy"
       ]) //
       (addPythonBuildDeps
         [ self.hatchling ] [
         "beautifulsoup4"
         "soupsieve"
-        "urllib3"
       ])
   );
 
-  mkPoetryApplication = { ... }@args:
+  mkPoetryApplication = args:
     poetry2nix.mkPoetryApplication (args // {
       inherit overrides;
+      inherit python;
     });
 
   inherit (poetry2nix.mkPoetryPackages {

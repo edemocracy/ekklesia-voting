@@ -6,7 +6,7 @@
   description = "ekklesia-voting";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     devenv.url = "github:cachix/devenv";
     poetry2nix = {
       url = "github:dpausp/poetry2nix";
@@ -26,8 +26,7 @@
       perSystem = { config, self', inputs', pkgs, system, ... }:
         let
           deps = import ./nix/deps.nix {
-            poetry2nix = inputs'.poetry2nix.legacyPackages;
-            poetry = inputs'.poetry2nix.packages.poetry;
+            poetry2nix = inputs.poetry2nix.lib.mkPoetry2Nix { inherit pkgs; };
             inherit pkgs;
           };
 
