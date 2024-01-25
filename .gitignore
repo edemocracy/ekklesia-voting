@@ -28,6 +28,7 @@ serve_app
 src/ekklesia_voting/static/css/*.css
 .devenv
 .direnv
+.envrc
 venv
 log.json
 .envrc
