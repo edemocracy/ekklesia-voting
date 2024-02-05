@@ -79,7 +79,18 @@ def verify_identity(identity):
 
 @App.after_oauth_callback()
 def create_or_update_user(request, ekklesia_auth: EkklesiaAuth) -> None:
-    userinfo = ekklesia_auth.data
+    _ = request.i18n.gettext
+
+    try:
+        userinfo = ekklesia_auth.data
+    except TypeError:
+        request.flash(
+            _(
+                "alert_ekklesia_auth_failed_parsing"
+            ), "danger"
+        )
+        return
+
     sub = userinfo.sub
     token = ekklesia_auth.token
 
@@ -93,8 +104,6 @@ def create_or_update_user(request, ekklesia_auth: EkklesiaAuth) -> None:
     auth_settings = request.app.root.settings.ekklesia_auth
 
     required_role_for_login = auth_settings.required_role_for_login
-
-    _ = request.i18n.gettext
 
     if (
         required_role_for_login is not None
